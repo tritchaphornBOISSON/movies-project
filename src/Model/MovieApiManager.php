@@ -10,9 +10,10 @@ class MovieApiManager
 
     public function getMovies() {
         $client = HttpClient::create();
+        $apiKey = $_ENV['MOVIE_API_KEY'];
         $response = $client->request('GET', 'https://api.themoviedb.org/3/trending/movie/day?language=en-US', [
             'headers' => [
-                'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2N2QzNzBlOTI4NjUyZTAzNTRmZWE3Y2FiNWM4MjlhZSIsInN1YiI6IjYwMDZhOGQ4NDIwMjI4MDA0NGYxMzZlMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QfNozgQjYPERKJOcYrHgpb5fV2_Y6tBJSjIBks3fkZI',
+                'Authorization' => 'Bearer ' . $apiKey,
                 'accept' => 'application/json',
             ],
         ]);
